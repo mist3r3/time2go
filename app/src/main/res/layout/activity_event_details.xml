@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/date_add_event"
+        android:id="@+id/event_detail_date"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"/>
 
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp">
-        <EditText android:id="@+id/add_event_name"
+        <EditText android:id="@+id/event_detail_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -29,11 +29,11 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearance"
         android:text="Source:"
-        android:id="@+id/event_source_text"
+        android:id="@+id/event_detail_source_text"
         android:layout_marginTop="10dp" />
 
     <fragment
-        android:id="@+id/place_autocomplete_fragment"
+        android:id="@+id/place_autocomplete_fragment_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
@@ -44,11 +44,11 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearance"
         android:text="@string/Destination_add_event"
-        android:id="@+id/event_destination_text"
+        android:id="@+id/event_detail_destination_text"
         android:layout_marginTop="10dp" />
 
     <fragment
-        android:id="@+id/place_autocomplete_fragment2"
+        android:id="@+id/place_autocomplete_fragment2_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.79"
         android:contextClickable="false">
-        <EditText android:id="@+id/add_event_description"
+        <EditText android:id="@+id/event_detail_description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"
@@ -97,7 +97,7 @@
             android:maxLines="1"
             android:text="9:00"
             android:layout_marginLeft="40dp"
-            android:id="@+id/add_beginning_time" />
+            android:id="@+id/event_detail_beginning_time" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
             android:maxLines="1"
             android:text="10:00"
             android:layout_marginLeft="30dp"
-            android:id="@+id/add_end_time" />
+            android:id="@+id/event_detail_end_time" />
 
     </LinearLayout>
 
@@ -126,20 +126,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp">
-        <EditText android:id="@+id/add_event_margin_time"
+        <EditText android:id="@+id/event_detail_margin_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:hint="Margin Time" />
     </android.support.design.widget.TextInputLayout>
 
-
+    <LinearLayout
+        android:id="@+id/top_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_add"
-        android:layout_width="fill_parent"
+        android:id="@+id/btn_modify"
+        android:layout_width="179dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:padding="12dp"
-        android:text="Add Event"/>
+        android:text="Modify"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_delete"
+            android:layout_width="179dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="12dp"
+            android:text="Delete"/>
+        </LinearLayout>
 
 </LinearLayout>

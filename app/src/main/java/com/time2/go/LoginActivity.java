@@ -12,24 +12,36 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import java.io.PrintWriter;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    DatabaseHelper db;
+
 
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
     @Bind(R.id.btn_login) Button _loginButton;
     @Bind(R.id.link_signup) TextView _signupLink;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        
+        db=new DatabaseHelper(getApplicationContext());
+        boolean test = db.checkUser();
+
+        if (db.checkUser()) {
+            Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+            startActivity(intent);
+        }
+
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -68,7 +80,10 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
+
         // TODO: Implement your own authentication logic here.
+
+
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -136,4 +151,6 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+
+
 }

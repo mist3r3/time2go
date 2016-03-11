@@ -7,6 +7,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        <uses-permission android:name="android.permission.INTERNET" />
         <activity
             android:name="com.time2.go.MainActivity"
             android:label="@string/app_name" >
@@ -19,6 +22,12 @@
         <activity android:name="com.time2.go.LoginActivity" android:theme="@style/AppTheme.Dark" />
         <activity android:name="com.time2.go.SignupActivity" android:theme="@style/AppTheme.Dark" />
         <activity android:name="com.time2.go.CalendarActivity" android:theme="@style/AppTheme.Dark" />
+        <activity android:name="com.time2.go.AddEventActivity" android:theme="@style/AppTheme.Dark" />
+        <activity android:name="com.time2.go.EventDetailsActivity" android:theme="@style/AppTheme.Dark" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDOeJ5tlVIYI1Ncf3pVT3psm3l0e8v9pFQ"/>
+
 
 
     </application>

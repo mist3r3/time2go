@@ -1,6 +1,7 @@
 package com.time2.go;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,11 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import java.sql.Connection;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
+    DatabaseHelper db;
 
     @Bind(R.id.input_name) EditText _nameText;
     @Bind(R.id.input_email) EditText _emailText;
@@ -27,6 +32,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
+        db=new DatabaseHelper(getApplicationContext());
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +66,16 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        String name = _nameText.getText().toString();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
 
         // TODO: Implement your own signup logic here.
+        User user=new User();
+        user.userEmail=_emailText.getText().toString();
+        user.userName=_nameText.getText().toString();
+        user.userPassword=_passwordText.getText().toString();
+        db.addUser(user);
+         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -86,7 +97,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Signup failed", Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
     }
