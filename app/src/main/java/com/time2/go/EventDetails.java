@@ -3,9 +3,7 @@ package com.time2.go;
 import com.time2.go.DateType;
 
 
-/**
- * Created by Olga on 16/01/2016.
- */
+
 public class EventDetails {
     public EventBasic header;
     public DateType startDate;
